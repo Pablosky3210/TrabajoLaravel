@@ -7,6 +7,5 @@
 </head>
 <body>
     <h1>Listado de productos</h1>
-    <a href="{{ route('login') }}">Iniciar sesion</a>
 </body>
 </html>
