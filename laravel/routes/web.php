@@ -17,7 +17,9 @@ use App\Models\Category;
 Route::middleware('auth')->group(function(){
     
 
-    Route::get('products/create','ProductController@create')->name('products.create');
+    Route::get('admin','AdminController@index')->name('admin.index');
+
+    Route::get('admin/categorycreate','AdminController@categorycreate')->name('admin.category');
 });
 Route::get('products','ProductController@index')->name('products.index');
 
