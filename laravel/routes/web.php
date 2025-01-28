@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function(){
     Route::get('admin','AdminController@index')->name('admin.index');
 
     Route::get('admin/categorycreate','AdminController@categorycreate')->name('admin.category');
+
+    Route::post('admin','AdminController@addctg')->name('admin.addctg');
 });
 Route::get('products','ProductController@index')->name('products.index');
 
