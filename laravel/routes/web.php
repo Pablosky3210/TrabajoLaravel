@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use Faker\Guesser\Name;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +24,12 @@ Route::middleware('auth')->group(function(){
     Route::get('admin/categorycreate','AdminController@categorycreate')->name('admin.category');
 
     Route::post('admin','AdminController@addctg')->name('admin.addctg');
+
+    Route::get('admin/categorylist','AdminController@list')->name('admin.categorylist');
+
+    Route::delete('admin/categorylist/{id}', 'AdminController@deleteCategory')->name('admin.categorydelete');
+
+    Route::get('admin/categoryedit', 'AdmminController@editcategory')->name('admin.categoryedit');
 });
 Route::get('products','ProductController@index')->name('products.index');
 

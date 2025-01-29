@@ -31,4 +31,15 @@ class AdminController extends Controller
 
         return redirect()->route('admin.index')->with('success', 'Categoría añadida exitosamente');
     }
+
+    public function list(){
+        $categories= Category::all();
+        return view('admin.categorylist', compact('categories'));
+    }
+
+    public function deleteCategory($id){
+        $category=Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route('admin.categorylist');
+    }
 }

@@ -9,6 +9,7 @@
     <h1>Lista admin</h1>
     Bienvenido {{auth()->user()->name}}
     <a href="{{route('admin.category')}}">Añadir Categoria</a>
+    <a href="{{route('admin.categorylist')}}">Lista de Categorias</a>
     <a href="javascript: document.getElementById('logout').submit()">Cerrar Sesion</a>
     <form id="logout" action="{{route('logout')}}" method="post" style="display: none;">
         @csrf
