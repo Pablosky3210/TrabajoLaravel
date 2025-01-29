@@ -22,7 +22,7 @@
                         {{$categorias->category_n}}
                     </td>
                     <td>
-                        <a href="" class="btn btn-warning ">Editar</a>
+                        <a href="{{route('admin.categoryedit', $categorias->id)}}" class="btn btn-warning ">Editar</a>
                         <a href="javascript: document.getElementById('delete-{{$categorias->id}}').submit()" class="btn btn-danger">Eliminar</a>
                         <form id="delete-{{$categorias->id}}" action="{{route('admin.categorydelete', $categorias->id)}}" method="post">
                             @method('delete')

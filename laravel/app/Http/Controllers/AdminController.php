@@ -42,4 +42,8 @@ class AdminController extends Controller
         $category->delete();
         return redirect()->route('admin.categorylist');
     }
+
+    public function Ceditview(){
+        return view('admin.categoryedit');
+    }
 }

@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function(){
 
     Route::delete('admin/categorylist/{id}', 'AdminController@deleteCategory')->name('admin.categorydelete');
 
-    Route::get('admin/categoryedit', 'AdmminController@editcategory')->name('admin.categoryedit');
+    Route::get('admin/categoryedit', 'AdminController@Ceditview')->name('admin.categoryedit');
 });
 Route::get('products','ProductController@index')->name('products.index');
 
