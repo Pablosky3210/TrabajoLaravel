@@ -16,11 +16,12 @@
                         Editar categoria
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.categoryedit') }}" method="post">
+                        <form action="{{ route('admin.categoryupdate', $category->id) }}" method="post">
+                            @method('put')
                             @csrf
                             <div class="form-group">
                                 <label for="">Nombre:</label>
-                                <input type="text" name="category_n" class="form-control">
+                                <input type="text" name="category_n" class="form-control" value="{{$category->category_n}}">
                             </div>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                             <a href="{{ route('admin.categorylist') }}" class="btn btn-danger">Cancelar</a>
