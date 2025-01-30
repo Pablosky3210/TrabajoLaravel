@@ -12,12 +12,7 @@ class ProductController extends Controller
         return view('products.index',compact('products'));
     }
 
-    public function create(){
-        $products= Product::orderBy('created_at','desc')->get();
-        return view('products.create',compact('products'));
-    }
+    
 
-    public function categorycreate(){
-        return "Crear categoria";
-    }
+    
 }
