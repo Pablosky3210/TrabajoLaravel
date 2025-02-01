@@ -86,15 +86,30 @@ class AdminController extends Controller
     return redirect()->route('admin.index')->with('success', 'Producto añadido exitosamente.');
     }
 
+    public function productlist(){
+        $products= Product::all();
+        return view('admin.productlist', compact('products'));
+    }
 
-        /**
-     * Sube una imagen a la colección de medios del modelo especificado.
-     * 
-     * @param \Illuminate\Database\Eloquent\Model $model El modelo al que se le asociará la imagen.
-     * @param \Illuminate\Http\UploadedFile $file El archivo de imagen subido.
-     * @return void
-     * @throws \Exception Si el archivo no es válido.
-     */
+    public function productedit($id){
+        $product= product::findOrFail($id);
+        return view('admin.productedit', compact('product'));
+    }
+
+    public function productUpdate(Request $request,$id){
+        $product= product::findOrFail($id);
+        $product->description=$request->input('description');
+        $product->price=$request->input('price');
+        $product->save();
+        return redirect()->route('admin.productlist');
+    }
+
+    public function deleteproduct($id){
+        $product=product::findOrFail($id);
+        $product->delete();
+        return redirect()->route('admin.productlist');
+    }
+
 
     
     

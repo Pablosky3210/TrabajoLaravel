@@ -10,7 +10,8 @@
     Bienvenido {{auth()->user()->name}}
     <a href="{{route('admin.category')}}">Añadir Categoria</a>
     <a href="{{route('admin.categorylist')}}">Lista de Categorias</a>
-    <a href="{{route('admin.productcreate')}}">Lista de Categorias</a>
+    <a href="{{route('admin.productcreate')}}">Añadir productos</a>
+    <a href="{{route('admin.productlist')}}">Lista de productos</a>
     <a href="javascript: document.getElementById('logout').submit()">Cerrar Sesion</a>
     <form id="logout" action="{{route('logout')}}" method="post" style="display: none;">
         @csrf
