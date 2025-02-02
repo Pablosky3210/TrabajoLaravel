@@ -17,35 +17,43 @@ use Faker\Guesser\Name;
 |
 */
 Route::middleware('auth')->group(function(){
-    
-
+    // Ruta para mostrar la vista principal del panel de administración
     Route::get('admin','AdminController@index')->name('admin.index');
 
+    // Rutas para crear una nueva categoría
     Route::get('admin/categorycreate','AdminController@categorycreate')->name('admin.category');
+    Route::post('admin/categorycreate','AdminController@addctg')->name('admin.addctg');
 
-    Route::post('admin','AdminController@addctg')->name('admin.addctg');
-
+    // Ruta para mostrar la lista de todas las categorías
     Route::get('admin/categorylist','AdminController@list')->name('admin.categorylist');
 
+    // Ruta para eliminar una categoría específica
     Route::delete('admin/categorylist/{id}', 'AdminController@deleteCategory')->name('admin.categorydelete');
 
+    // Rutas para editar una categoría específica
     Route::get('admin/{id}/categoryedit', 'AdminController@Ceditview')->name('admin.categoryedit');
+    Route::put('admin/{id}', 'AdminController@categoryUpdate')->name('admin.categoryupdate');
 
-    Route::put('admin/{id}','AdminController@categoryUpdate')->name('admin.categoryupdate');
-
+    // Rutas para crear un nuevo producto
     Route::get('admin/productcreate','AdminController@create')->name('admin.productcreate');
+    Route::post('admin/productcreate','AdminController@addproduct')->name('admin.addproduct');
 
-    Route::post('admin','AdminController@addproduct')->name('admin.addproduct');
-
+    // Ruta para mostrar la lista de todos los productos
     Route::get('admin/productlist','AdminController@productlist')->name('admin.productlist');
 
+    // Rutas para editar un producto específico
     Route::get('admin/{id}/productedit', 'AdminController@productedit')->name('admin.productedit');
-
     Route::put('admin/{id}','AdminController@productUpdate')->name('admin.productupdate');
-
+    
+    // Ruta para eliminar un producto específico
     Route::delete('admin/productlist/{id}', 'AdminController@deleteproduct')->name('admin.productdelete');
 });
+// Ruta para mostrar la vista pública de los productos
 Route::get('products','ProductController@index')->name('products.index');
 
+// Ruta para filtrar los productos por categoría
+Route::get('/category/{categoryId}', 'ProductController@filterByCategory')->name('products.filter');
+
 Auth::routes();
+
 

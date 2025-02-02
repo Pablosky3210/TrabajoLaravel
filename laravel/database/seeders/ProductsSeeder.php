@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Product;
 
-class ProductSeeder extends Seeder
+class ProductsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +16,10 @@ class ProductSeeder extends Seeder
     public function run()
     {
         Product::create([
-            'description' => 'Solomillo',
-            'price' =>'12'
+            'description' => 'Salmon',
+            'price' =>'5',
+            'id_category'=>'1'
+            
         ]);
     }
 }

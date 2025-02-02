@@ -10,6 +10,16 @@
 <body>
     <div class="card-body">
         <div><h1><center>Listado de categorias</center></h1></div>
+        @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
         <table class="table table-hover table-sm" border="1">
             <thead>
                 <th>Categorias</th>

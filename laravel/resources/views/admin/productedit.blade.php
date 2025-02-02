@@ -13,7 +13,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Editar categoria
+                        Editar producto
                     </div>
                     <div class="card-body">
                         <form action="{{ route('admin.productupdate', $product->id) }}" method="post">

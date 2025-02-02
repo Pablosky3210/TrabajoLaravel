@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="card-body">
-        <div><h1><center>Listado de categorias</center></h1></div>
+        <div><h1><center>Listado de productos</center></h1></div>
         <table class="table table-hover table-sm" border="1">
             <thead>
                 <th>Productos</th>
