@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function(){
 
     // Rutas para editar una categoría específica
     Route::get('admin/{id}/categoryedit', 'AdminController@Ceditview')->name('admin.categoryedit');
-    Route::put('admin/{id}', 'AdminController@categoryUpdate')->name('admin.categoryupdate');
+    Route::put('admin/admin/{id}', 'AdminController@categoryUpdate')->name('admin.categoryupdate');
 
     // Rutas para crear un nuevo producto
     Route::get('admin/productcreate','AdminController@create')->name('admin.productcreate');
@@ -47,6 +47,17 @@ Route::middleware('auth')->group(function(){
     
     // Ruta para eliminar un producto específico
     Route::delete('admin/productlist/{id}', 'AdminController@deleteproduct')->name('admin.productdelete');
+
+    Route::get('admin/createanuncio','AdminController@createanuncio')->name('admin.createanuncio');
+    Route::post('admin/createanuncio', 'AdminController@addanuncio')->name('admin.addanuncio');
+
+    Route::get('admin/anunciolist', 'AdminController@anunciolist')->name('admin.anunciolist');
+
+    Route::delete('admin/anunciolist/{id}', 'AdminController@deleteanuncio')->name('admin.anunciodelete');
+
+    // Rutas para editar un producto específico
+    Route::get('admin/{id}/anuncioedit', 'AdminController@anuncioedit')->name('admin.anuncioedit');
+    Route::put('admin/{id}','AdminController@anuncioUpdate')->name('admin.anuncioupdate');
 });
 // Ruta para mostrar la vista pública de los productos
 Route::get('products','ProductController@index')->name('products.index');

@@ -54,6 +54,8 @@
                 <a href="{{route('admin.categorylist')}}">Lista de Categorias</a>
                 <a href="{{route('admin.productcreate')}}">Añadir productos</a>
                 <a href="{{route('admin.productlist')}}">Lista de productos</a>
+                <a href="{{route('admin.createanuncio')}}">Crear Anuncio</a>
+                <a href="{{route('admin.anunciolist')}}">Lista de Anuncios</a>
                 <a href="javascript: document.getElementById('logout').submit()">Cerrar Sesión</a>
                 <form id="logout" action="{{route('logout')}}" method="post" style="display: none;">
                     @csrf

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Anuncio;
 
 class AdminController extends Controller
 {
@@ -137,6 +138,50 @@ class AdminController extends Controller
         $product=product::findOrFail($id);
         $product->delete();
         return redirect()->route('admin.productlist');
+    }
+
+    public function createanuncio(){
+        return view('admin.createanuncio');
+    }
+
+    public function addanuncio(Request $request){
+        // Guardar nuevo anuncio
+        $newAnuncio = new Anuncio();
+        $newAnuncio->title = $request->input('title');
+        $newAnuncio->message = $request->input('message');
+        $newAnuncio->date_start = $request->input('date_start');
+        $newAnuncio->date_end = $request->input('date_end');
+        $newAnuncio->save();
+        return redirect()->route('admin.index');
+    }
+
+    public function anunciolist(){
+        $anuncios= Anuncio::all();
+        return view('admin.anunciolist', compact('anuncios'));
+    }
+
+    // Elimina un producto de la base de datos.
+    public function deleteanuncio($id){
+        $anuncio=Anuncio::findOrFail($id);
+        $anuncio->delete();
+        return redirect()->route('admin.anunciolist');
+    }
+
+    // Muestra la vista para editar un producto específico.
+    public function anuncioedit($id){
+        $anuncio= anuncio::findOrFail($id);
+        return view('admin.anuncioedit', compact('anuncio'));
+    }
+
+    // Actualiza un producto existente en la base de datos.
+    public function anuncioUpdate(Request $request,$id){
+        $anuncio= anuncio::findOrFail($id);
+        $anuncio->title=$request->input('title');
+        $anuncio->message=$request->input('message');
+        $anuncio->date_start=$request->input('date_start');
+        $anuncio->date_end=$request->input('date_end');
+        $anuncio->save();
+        return redirect()->route('admin.anunciolist');
     }
 
 
