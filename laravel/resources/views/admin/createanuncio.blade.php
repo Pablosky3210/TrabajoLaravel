@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Nueva categoria
+                        Nueva Anuncio
                     </div>
                     <div class="card-body">
                         @if(session('error'))

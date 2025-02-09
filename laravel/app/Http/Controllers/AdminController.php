@@ -152,6 +152,15 @@ class AdminController extends Controller
         $newAnuncio->date_start = $request->input('date_start');
         $newAnuncio->date_end = $request->input('date_end');
         $newAnuncio->save();
+        $text="<b>Nuevo Anuncio</b>\n\n"
+        .$request->input('title')."\n\n".$request->input('message');
+        
+
+        \Telegram::sendMessage([
+            'chat_id'=>env('TELEGRAM_CHANNEL_ID',''),
+            'parse_mode'=>'HTML',
+            'text'=>$text
+        ]);
         return redirect()->route('admin.index');
     }
 

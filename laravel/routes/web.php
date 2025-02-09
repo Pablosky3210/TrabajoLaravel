@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function(){
 
     // Rutas para editar un producto específico
     Route::get('admin/{id}/productedit', 'AdminController@productedit')->name('admin.productedit');
-    Route::put('admin/{id}','AdminController@productUpdate')->name('admin.productupdate');
+    Route::put('/adminadmin/admin/{id}','AdminController@productUpdate')->name('admin.productupdate');
     
     // Ruta para eliminar un producto específico
     Route::delete('admin/productlist/{id}', 'AdminController@deleteproduct')->name('admin.productdelete');
@@ -64,6 +64,13 @@ Route::get('products','ProductController@index')->name('products.index');
 
 // Ruta para filtrar los productos por categoría
 Route::get('/category/{categoryId}', 'ProductController@filterByCategory')->name('products.filter');
+
+Route::get('/anuncios/filterByDate', 'ProductController@filterByDate')->name('products.filterByDate');
+
+Route::get('products/anuncios', 'ProductController@anunciosview')->name('products.anuncios');
+
+Route::get('/activity','ProductController@updatedActivity');
+
 
 Auth::routes();
 
