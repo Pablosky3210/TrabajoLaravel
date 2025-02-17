@@ -103,9 +103,8 @@ class AdminController extends Controller
     
        
     if ($request->hasFile('image')) {
-        $product->addMedia($request->file('image'))
-            ->usingFileName($request->file('image')->getClientOriginalName()) 
-            ->toMediaCollection('images', 'public');  
+        $product->addMedia($request->file('image')) 
+            ->toMediaCollection();  
     }
     
 
@@ -152,8 +151,8 @@ class AdminController extends Controller
         $newAnuncio->date_start = $request->input('date_start');
         $newAnuncio->date_end = $request->input('date_end');
         $newAnuncio->save();
-        $text="<b>Nuevo Anuncio</b>\n\n"
-        .$request->input('title')."\n\n".$request->input('message');
+        $text="<b>Nuevo Anuncio</b>\n\nTitulo:"
+        .$request->input('title')."\n\n".$request->input('message')."\n\nFecha de inicio:".$request->input('date_start')."\n\nFecha de fin:".$request->input('date_end');
         
 
         \Telegram::sendMessage([

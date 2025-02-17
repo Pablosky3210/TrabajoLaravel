@@ -22,23 +22,36 @@
             margin-left: 0;
             margin-right: 0;
         }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
     </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-                
-            </div>
-
-            <div class="col-md-8">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
                 <h1 class="text-center mb-4">Listado de Productos</h1>
                 <div class="mb-4">
-                <div class="mb-4">
-                    <a href="{{ route('products.anuncios') }}" class="btn btn-primary">Anuncios</a>
-                </div>
+                    <a href="{{ route('products.anuncios') }}" class="btn btn-primary mb-3">Anuncios</a>
                     <label for="category-select" class="form-label">Buscar por Categoría:</label>
-                    <select id="category-select" class="form-select" onchange="filterProducts()">
+                    <select id="category-select" class="form-select mb-4" onchange="filterProducts()">
                         <option value="{{ route('products.index') }}" {{ $selectedCategory === 'all' ? 'selected' : '' }}>Todas</option>
                         @foreach($categories as $category)
                             <option value="{{ route('products.filter', $category->id) }}" {{ $selectedCategory == $category->id ? 'selected' : '' }}>{{ $category->category_n }}</option>
@@ -49,6 +62,8 @@
                     @foreach($products as $product)
                         <div class="col-md-4 product-card">
                             <div class="card">
+                                <!-- Mostrar la imagen desde la base de datos -->
+                                <img src="{{ asset('storage/' . basename(dirname($product->getFirstMediaUrl())) . '/' . basename($product->getFirstMediaUrl())) }}" class="card-img-top" alt="{{ $product->title }}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $product->title }}</h5>
                                     <p class="card-text">{{ $product->description }}</p>
@@ -69,7 +84,6 @@
             const selectedCategory = categorySelect.value;
             window.location.href = selectedCategory;
         }
-
     </script>
 </body>
 </html>

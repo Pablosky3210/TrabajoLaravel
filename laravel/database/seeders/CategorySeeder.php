@@ -18,8 +18,25 @@ class CategorySeeder extends Seeder
     {
         Model::unguard();
 
+        // Crear las categorías
         Category::create([
-            'category_n' => 'pescado',
+            'category_n' => 'Pescado',
+        ]);
+        
+        Category::create([
+            'category_n' => 'Mariscos',
+        ]);
+        
+        Category::create([
+            'category_n' => 'Carnes',
+        ]);
+        
+        Category::create([
+            'category_n' => 'Frutas',
+        ]);
+        
+        Category::create([
+            'category_n' => 'Verduras',
         ]);
     }
 }

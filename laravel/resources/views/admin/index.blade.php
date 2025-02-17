@@ -24,15 +24,28 @@
             padding: 10px;
             border-radius: 5px;
         }
-        .sidebar a:hover {
-            background-color: #007bff;
-        }
+        
         .content {
             padding: 20px;
         }
         .navbar-custom {
             background-color: #007bff;
             color: #fff;
+        }
+
+        /* Estilo cuando el mouse pasa sobre el enlace */
+        .sidebar a:hover {
+            background-color: #007bff; /* Azul para la mayoría de los enlaces */
+        }
+
+        /* Estilo específico para el enlace de "Cerrar Sesión" */
+        .sidebar .logout-btn:hover {
+            background-color: #c82333; /* Rojo para el enlace de cerrar sesión */
+        }
+
+        /* Opcional: Estilo al pasar el cursor sobre el botón */
+        .sidebar .logout-btn {
+            color: white;
         }
     </style>
 </head>
@@ -56,7 +69,7 @@
                 <a href="{{route('admin.productlist')}}">Lista de productos</a>
                 <a href="{{route('admin.createanuncio')}}">Crear Anuncio</a>
                 <a href="{{route('admin.anunciolist')}}">Lista de Anuncios</a>
-                <a href="javascript: document.getElementById('logout').submit()">Cerrar Sesión</a>
+                <a href="javascript: document.getElementById('logout').submit()" class="logout-btn btn btn-danger">Cerrar Sesión</a>
                 <form id="logout" action="{{route('logout')}}" method="post" style="display: none;">
                     @csrf
                 </form>
